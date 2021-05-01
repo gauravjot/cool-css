@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta NAME="author" content="gauravjot">
+    <title>Popout Edges on Hover</title>
+    <style type="text/css">
+    *,*::after,*::before{box-sizing: border-box;}
+    body {
+        height:100vh;
+        background-color: #101010;
+        font-family: 'Roboto',Arial, Helvetica, sans-serif;
+        margin:auto;
+        width:80%;
+        max-width: 1200px;
+        text-align:center;
+    }
+    button {
+        width:fit-content;
+        padding:.5em 2em;
+        border-radius: .5rem;
+        background: transparent;
+        color:#e1275f;
+        font-size:2rem;
+        font-weight:bold;
+        position:relative;
+        margin:1rem;
+        cursor:pointer;
+        border:.1em #e1275f solid;
+        transition: background-color .25s ease-in-out,
+            color .25s ease-in-out;
+    }
+    .navbtn {
+        font-size:1rem;
+        margin:0 .3rem;
+        padding:.5em 1em;
+        border:none;
+    }
+    button:hover {
+        background-color: #e1275f;
+        color:#111;
+    }
+    button:focus {
+        outline: none;
+        text-decoration: underline;
+    }
+    button:active {
+        text-decoration: underline;
+    }
+    button:hover::before {
+        left:-.5em;
+        bottom:-.5em;
+        opacity: 1;
+    }
+    
+    button::before {
+        content:'';
+        position: absolute;
+        border-left: .15em #e1275f solid;
+        border-bottom: .15em #e1275f solid;
+        border-bottom-left-radius: .6rem;
+        width:1em;
+        height:1em;
+        left:0;
+        bottom:0;
+        opacity: 0;
+        transition: left .5s ease-in-out,
+            bottom .5s ease-in-out,
+            opacity .25s ease-in-out;
+    }
+    button:hover::after {
+        right:-.5em;
+        top:-.5em;
+        opacity: 1;
+    }
+    
+    button::after {
+        content:'';
+        position: absolute;
+        border-right: .15em #e1275f solid;
+        border-top: .15em #e1275f solid;
+        border-top-right-radius: .6rem;
+        width:1em;
+        height:1em;
+        right: 0;
+        top:0;
+        opacity: 0;
+        transition: right .5s ease-in-out,
+            top .5s ease-in-out,
+            opacity .25s ease-in-out;
+    }
+
+    nav {
+        padding:1.5rem 1rem;
+        display:grid;
+        grid-template-columns: 1fr 2fr;
+    }
+    nav .logo {
+        margin:auto 0;
+        font-size: 1.5rem;
+        color:#fff;
+        font-weight: bold;
+        grid-column: 1/2;
+        text-align: left;
+    }
+    nav .options {
+        grid-column:2/3;
+        text-align: right;
+    }
+    nav .options button {
+        display:inline-block;
+    }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Navbar</div>
+        <div class="options">
+            <button class="navbtn">Home</button>
+            <button class="navbtn">Products</button>
+            <button class="navbtn">Contact</button>
+        </div>
+    </nav>
+    <br/><br/>
+    <button>Hover Me!</button>
+</body>
+</html>
